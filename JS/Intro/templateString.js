@@ -13,4 +13,5 @@ console.log("User details is",typeof userDetails)
 //Template string use back ticks
 let userDetails2=`${fistname} ${secondName} is ${age} years old and he stays at ${address}`
 console.log(userDetails2)
+console.log(`${typeof userDetails} ${60+30}`)
 console.log(`${fistname} ${secondName} is ${age} years old and he stays at ${address}`)
