@@ -26,7 +26,7 @@ const salary=70000
 const salaryGross=bonus+salary; 
 
 //console.log(salaryGross) !-> more information
-console.log("Gross salary is",salaryGross) // ->more helpful
+console.log("Gross salary is",salaryGross,"its type ",typeof salaryGross) // ->more helpful
 //Tax calculation
 const paye=salaryGross*0.16
 console.log("For Gross Salary",salaryGross,"Paye is",paye)
