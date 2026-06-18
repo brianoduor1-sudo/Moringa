@@ -19,9 +19,10 @@ console.log(number3)
        */
 let str1="Double quote I am Oduor"// double quotes
 console.log(str1);
-let str2='Single Quote I am Oduor'// single quotes
-console.log(str2);
+
 let str3=`Back Tick I am Oduor`//Back Ticks
+
+
 /* Boolean represent true or false */
 let johnisMale=true //true value
 console.log(johnisMale)
