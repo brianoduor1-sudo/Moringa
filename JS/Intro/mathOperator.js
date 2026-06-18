@@ -19,3 +19,18 @@ let numb5=numb1**4
 console.log(`numb5 is ${numb5} its type is ${typeof numb5}`)
 let numb6=Math.pow(numb1,4)
 console.log(`numb6 is ${numb6} its type is ${typeof numb6}`)
+
+//
+let numb7=72
+let numb8=8
+let divNumb=numb7/numb8
+
+console.log(`divNumb is ${divNumb } its type is ${typeof divNumb}`)
+
+//
+
+let numb9=27
+let numb10=14
+let modNu=numb9%numb10
+
+console.log(`modNu is ${modNu} its type is ${typeof modNu}`)
