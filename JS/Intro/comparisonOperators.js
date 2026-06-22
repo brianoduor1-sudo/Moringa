@@ -29,5 +29,29 @@ console.log(`val1=${val1}!==val2=${val2}
 let Inequality=val1!=val2
 console.log(`val1=${val1}!=val2=${val2}
     Ans ${Inequality} its type is ${typeof Inequality}`)
+    /*
+     > greater than a>b
+     < less than a<b
+     >= greater than or equal to a>=b
+     <= less than or equal to a<=b*/
 
- 
+let numb4=20;
+let numb5=40
+
+let str1="c"
+let str2="b"
+
+console.log(`numb4=${numb4} and numb5=${numb5}`)
+console.log(`str1=${str1} and str2=${str2}`)
+
+console.log(`numb4>numb5 ${numb4>numb5}`)
+console.log(`str1>str2 ${str1>str2}`)
+
+console.log(`numb4<numb5 ${numb4<numb5}`)
+console.log(`str1<str2 ${str1<str2}`)
+
+console.log(`numb4>=numb5 ${numb4>=numb5}`)
+console.log(`str1>=str2 ${str1>=str2}`)
+
+console.log(`numb4<=numb5 ${numb4<=numb5}`)
+console.log(`str1<=str2 ${str1<=str2}`)
