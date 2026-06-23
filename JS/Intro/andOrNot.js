@@ -41,3 +41,16 @@ console.log(`oluthe age is greater than 18
 let simmplifed=oluthe_age>18&&oluthe_balance>30000
 console.log(`simplified ${simmplifed}`)
 console.log(`further simplification is ${oluthe_age>18&&oluthe_balance>30000}`)
+
+
+console.log(`oluthe age is greater than 18 
+    and has more than 30000 in his account 
+    ${is_greater_than18||has_more_than30000}`)
+    
+/*
+or atleast one statement has to be true for the whole statement to be true
+*/
+console.log(`This is not true = ${!true}`)
+console.log(`This is not false = ${!false}`)
+
+    
