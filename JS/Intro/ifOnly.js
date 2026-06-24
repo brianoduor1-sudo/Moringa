@@ -11,6 +11,7 @@ lets start with if
 one statement does not depend on another*/
 
 let age=prompt("Enter your age:")
+console.log(`age is ${age} typeof ${typeof age}`);
 alert(`You entered ${age}`)
 
 if(age>10){alert("You are a baby")}
