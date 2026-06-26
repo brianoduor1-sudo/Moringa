@@ -29,53 +29,78 @@ let emloyerContribution=(nssf)
 
 if(grossMonthlySalary < 9000)
     {Nssf= grossMonthlySalary * (6/100) + {emloyerContribution}
+     nssf_tier = "nssf 0-9000 KES"
    
     }
 if(grossMonthlySalary >9000 && grossMonthlySalary <=108000)
-    {Nssf= grossMonthlySalary -(9000) * (6/100)+grossMonthlySalary * (6/100)+{emloyerContribution}}
+    {Nssf= grossMonthlySalary -(9000) * (6/100)+grossMonthlySalary * (6/100)+{emloyerContribution}
+     nssf_tier = "nssf 9000-108000 KES"}
     
     
 if(grossMonthlySalary >108000)
     {Nssf= grossMonthlySalary=(6480)+ {emloyerContribution}
-    
+     nssf_tier = "nssf 108000 to infinity KES"
     }
 
-alert(`nssf is ${nssf} and Nssf level is ${typeof grossMonthlySalary}`)
+alert(`nssf is ${nssf} and Nssf level is ${typeof nssf_tier}`)
 
 /*
 calculate the paye*/
  let taxableIncome=(grossMonthlySalary-nssf)
 
+ const personal_relief=2400
 
- let tier1= "0-24,000 KES";(taxableIncome*(10/100))
- let tier2 = "24,001-32,333 KES";(tier1 +taxableIncome-24000(25/100))
- let tier3 = "32,334-500,000 KES";(tier1+tier2+taxableIncome-32334(30/100))
- let tier4 = "500,001-800,000 KES";(tier1+tier2+tier3+taxableIncome-500000(32.5/100))
- let tier5 = "800,000- To Infity KES";(tier1+tier2+tier3+tier4+taxableIncome-800000(35/100))
+ const bracket1= 24000;
+ const bracket2= 32333;
+ const bracket3= 500000;
+ const bracket4= 800000;
 
-if(taxableIncome < 24000)
-    {paye = taxableIncome * (10/100);
-    
-}
-
- if(taxableIncome > 24000 && taxableIncome <= 32333)
-    {paye =(tier1 +taxableIncome-24000(25/100))
-    
- }
-
-if(taxableIncome > 32333 && taxableIncome <= 500000 )
-    {paye = (tier1+tier2+tier3+taxableIncome-500000(32.5/100))
-    
-    }
+ const band1= bracket1*0.1;
+ const band2= (bracket2 - bracket1)*0.25;
+ const band3= (bracket3 -bracket2)*0.3;
+ const band4= (bracket4 -bracket3)*0.325;
  
- if(taxableIncome > 500000 && taxableIncome <= 800000)
-    {paye = (tier1+tier2+tier3+taxableIncome-500000(32.5/100))
-    
+ if(taxableIncome <= 24000)
+    {paye= taxableIncome*0.1
+    paye_tier = "Paye 0-24000 KES"
+    } else if (taxableIncome <= 32333){
+        let diff= taxableIncome-24000
+        let tax= diff*0.25
+        paye= tax + band1;
+        paye_tier="Paye 24000-32333"
+    }  else if (taxableIncome <= 500000){
+        let diff= taxableIncome-32333
+        let tax= diff*0.3
+        paye= tax + band1+band2;
+        paye_tier="Paye 32000-500000"
+    }  else if (taxableIncome <= 800000){
+        let diff= taxableIncome-500000
+        let tax= diff*0.325
+        paye= tax + band1+band2+band3;
+        paye_tier="Paye 500000-800000"
+    }  else  (taxableIncome =>800001)
+    {
+        let diff= taxableIncome-800000
+        let tax= diff*0.35
+        paye= tax + band1+band2+band3+band4;
+        paye_tier="Paye 800000 to infinity KES"
     }
- 
 
- if(taxableIncome > 800000){
-    paye = (tier1+tier2+tier3+tier4+taxableIncome-800000(35/100))
-    }
-alert(`Paye is ${paye} and tier level is ${typeof tier}`)
 
+const final_paye = Math.max(0, paye -personal_relief)
+
+alert( `Taxable Income ${taxableIncome}
+        Paye ${paye}
+        Personal Relief ${personal_relief}
+        Final Paye ${final_paye}
+        Tier ${paye_tier}`);
+
+let shif=(grossMonthlySalary*2.75);
+let housingLevy=(grossMonthlySalary*1.5);
+
+let netIncome=(grossMonthlySalary -(paye+shif+housingLevy+nssf))
+alert(`For gross salary ${grossMonthlySalary}
+       nssf ${nssf} tier ${nssf_tier}
+       Persona Relief ${personal_relief}
+       Final Paye ${final_paye}
+       Tier ${paye_tier}`);
