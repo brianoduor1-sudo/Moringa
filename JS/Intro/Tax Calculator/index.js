@@ -22,31 +22,60 @@ while(true){let gross = prompt("Enter your gross salary");
 console.log(`Gross salary is ${grossMonthlySalary} its type ${typeof grossMonthlySalary}`
 
 );
+/*
+calculate the Nssf*/
+let nssf= 0
+let emloyerContribution=(nssf)
+
+if(grossMonthlySalary < 9000)
+    {Nssf= grossMonthlySalary * (6/100) + {emloyerContribution}
+   
+    }
+if(grossMonthlySalary >9000 && grossMonthlySalary <=108000)
+    {Nssf= grossMonthlySalary -(9000) * (6/100)+grossMonthlySalary * (6/100)+{emloyerContribution}}
+    
+    
+if(grossMonthlySalary >108000)
+    {Nssf= grossMonthlySalary=(6480)+ {emloyerContribution}
+    
+    }
+
+alert(`nssf is ${nssf} and Nssf level is ${typeof grossMonthlySalary}`)
 
 /*
 calculate the paye*/
+ let taxableIncome=(grossMonthlySalary-nssf)
 
-if(grossMonthlySalary < 24000)
-    {paye = grossMonthlySalary * (10/100);
-    tier1= "0-24,000 KES"
+
+ let tier1= "0-24,000 KES";(taxableIncome*(10/100))
+ let tier2 = "24,001-32,333 KES";(tier1 +taxableIncome-24000(25/100))
+ let tier3 = "32,334-500,000 KES";(tier1+tier2+taxableIncome-32334(30/100))
+ let tier4 = "500,001-800,000 KES";(tier1+tier2+tier3+taxableIncome-500000(32.5/100))
+ let tier5 = "800,000- To Infity KES";(tier1+tier2+tier3+tier4+taxableIncome-800000(35/100))
+
+if(taxableIncome < 24000)
+    {paye = taxableIncome * (10/100);
+    
 }
 
- if(grossMonthlySalary > 24000 && grossMonthlySalary <= 32333)
-    {paye = grossMonthlySalary * (25/100)
-    tier2 = "24,001-32,333 KES"
+ if(taxableIncome > 24000 && taxableIncome <= 32333)
+    {paye =(tier1 +taxableIncome-24000(25/100))
+    
  }
 
-if(grossMonthlySalary > 32333 && grossMonthlySalary <= 500000 )
-    {paye = grossMonthlySalary * (30/100)
-    tier3 = "32,334-500,000 KES"
+if(taxableIncome > 32333 && taxableIncome <= 500000 )
+    {paye = (tier1+tier2+tier3+taxableIncome-500000(32.5/100))
+    
     }
  
- if(grossMonthlySalary > 500000 && grossMonthlySalary <= 800000)
-    {paye = grossMonthlySalary * (32.5/100)
-    tier4 = "500,001-800,000 KES"
+ if(taxableIncome > 500000 && taxableIncome <= 800000)
+    {paye = (tier1+tier2+tier3+taxableIncome-500000(32.5/100))
+    
     }
  
 
- if(grossMonthlySalary > 800000){
-    paye = grossMonthlySalary * (35/100)
-    tier5 = "800,000- infinity KES"}
+ if(taxableIncome > 800000){
+    paye = (tier1+tier2+tier3+tier4+taxableIncome-800000(35/100))
+    }
+alert(`Paye is ${paye} and tier level is ${typeof tier}`)
+
