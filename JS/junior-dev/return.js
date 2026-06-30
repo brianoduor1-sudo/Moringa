@@ -8,7 +8,7 @@ function sayMyname(){
     let second_name = " Oluoch" // statement 3
     console.log(`Second Name ${second_name}`); // statement 4
     let full_name= `${first_name} ${second_name}`; //statement 5
-    console.log(`Names are ${false}`); //statement 6
+    console.log(`Names are ${full_name}`); //statement 6
 }
 
 let sayMyNameValue = sayMyname();
