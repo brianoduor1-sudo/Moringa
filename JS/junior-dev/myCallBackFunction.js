@@ -1,7 +1,7 @@
 
-let C = areaOfCircle = Circle = side1
-let R = areaOfRectangle = Rectangle = side2
-let T = areaOfTriangle = Triangle = side3
+let C = areaOfCircle
+let R = areaOfRectangle 
+let T = areaOfTriangle 
 
   const areaOfRectangle =(l,w) => {
     return l*w
