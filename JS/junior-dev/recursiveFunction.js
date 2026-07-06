@@ -11,6 +11,17 @@ function salaryGrossPromptProcess() {
         console.log(`You entered this amount ${gross} exiting`);
         return;
     }
-    
+    alert(`Invalid gross salary entered. enter a number for gross salary. try again`);
+    salaryGrossPromptProcess()
 }
 salaryGrossPromptProcess();
+
+
+//factorial 
+
+function factorialNumber(n) {
+    if (isNaN(n) || n < 0) {
+        console.log("Please enter a valid non-negative number.");
+        return;
+    }
+}
