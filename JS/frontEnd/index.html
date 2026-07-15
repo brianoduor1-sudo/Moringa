@@ -7,22 +7,34 @@
 </head>
 
 <body>
+
     <div id="Team">
         <h3>Leagues</h3>
 
         <ul>
-            <li class="list-item"> Champions League</li>
-            <li class="list-item"> English Premier League</li>
-            <li class="list-item"> La Liga </li>
+            <li class="list-item">Champions League</li>
+            <li class="list-item">English Premier League</li>
+            <li class="list-item">La Liga</li>
         </ul>
     </div>
 
     <div>
         <button onclick="original()">Original</button>
-        <button onclick="replace()">updating Content</button>
-        <button onclick="update()">update the otherLeagues</button>
+        <button onclick="replace()">Updating Content</button>
+        <button onclick="update()">Update the Other Leagues</button>
     </div>
 
+    <div>
+        <button id="btn-event-checker">Click Me</button>
+    </div>
+<p>
+    X: <span id="x">0</span>
+    &nbsp;&nbsp;
+    Y: <span id="y">0</span>
+</p>
+
     <script src="domAccess.js"></script>
+    <script src="domEvent.js"></script>
+
 </body>
 </html>
