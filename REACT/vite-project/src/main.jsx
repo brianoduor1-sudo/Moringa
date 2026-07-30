@@ -4,14 +4,14 @@ import { createRoot } from 'react-dom/client'
  import <AnyName:Default Export> from "Path"
   import js or jsx files. The extension is optional
    */
-import Navigation from "./AmazonPage/navigation.jsx";
-import "./AmazonPage/index.css";
-import FilterList from './AmazonPage/FilterList.jsx'; ;
-import ItemCard from "./AmazonPage/ItemCard.jsx";
+import AmazonPage from "./AmazonPage/index.jsx";
+
+
+import "./index.css";
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Navigation />
-    <FilterList />
-    <ItemCard />
+    <AmazonPage />
   </StrictMode>,
   );
