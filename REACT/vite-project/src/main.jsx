@@ -7,9 +7,9 @@ import { createRoot } from "react-dom/client";
 import Props from "./Props";
 
 import "./index.css";
-
+import Mapping from "./Mapping";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Props />
+    <Mapping />
   </StrictMode>,
 );
