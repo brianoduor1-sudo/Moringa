@@ -1,102 +1,64 @@
 function Mapping() {
-  /*
-    in react you might need to display data from an array
-    -for(array.map): new Array
-    react (expression)
-    map(@param1)
-    @param1=> call back function => single array item will be passed,index
-        @param1(@param2,@param3)
-            @param2=>single array item will be passed,index
-  */
+  const data = [
+    {
+      description:
+        "Jump Rope, Tangle-Free Rapid Speed Jumping Rope Cable with Ball Bearings for Women, Men, and Kids, Adjustable Steel Jump Rope",
+      amount: 1157,
+      img: "https://m.media-amazon.com/images/I/71wm42EtoNL._AC_UL480_FMwebp_QL65_.jpg",
+    },
+    {
+      description:
+        "BOOMIBOO Jump Rope, Adjustable Jump Ropes, Skipping Rope Tangle-Free Rapid Speed with Ball Bearings for Women",
+      amount: 697,
+      img: "https://m.media-amazon.com/images/I/71WhY22zw7L._AC_UL480_FMwebp_QL65_.jpg",
+    },
+    {
+      description:
+        "SPORTBIT Adjustable Jump Rope for Fitness and Exercise | Cardio, Boxing, and Weight Loss, Speed Rope",
+      amount: 774,
+      img: "https://m.media-amazon.com/images/I/71UzJ-BgpFL._AC_UL480_FMwebp_QL65_.jpg",
+    },
+    {
+      description:
+        "JAMIEWIN Led Light Up Jump Rope for Kids Glow in the Dark Beaded Jump Rope | Adjustable, Colorful Soft Beaded Segmented",
+      amount: 1679,
+      img: "https://m.media-amazon.com/images/I/719M6JVne6L._AC_UL480_FMwebp_QL65_.jpg",
+    },
+  ];
 
-  /*
-    the map function and the Loop
-    map function is method in an array:(pop,push)
-    ->The work of the map function is creating a new array from going through the existing array
-    //->expression statement
-    ->evaluate and yield results.
-  */
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>Amazon Products</h1>
 
-  const numbers = [2, 6, 23, 565, 32];
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "20px",
+        }}
+      >
+        {data.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              border: "1px solid #ddd",
+              borderRadius: "10px",
+              padding: "15px",
+              background: "#fff",
+            }}
+          >
+            <img
+              src={item.img}
+              alt="jump rope"
+              style={{ width: "100%", height: "200px", objectFit: "contain" }}
+            />
 
-  let x = numbers.forEach((element) => {
-    console.log("Element is ", element);
-    return "this is n";
-  });
-  console.log(x);
-  //powers of the numbers
-  const powersOfNumber = numbers.map((n) => {
-    console.log("this is n ", n);
-    return n * n;
-  }); //[4,36,]
-  const justMap = numbers.map(() => "cats and dogs"); //["cats and fogs"]
+            <p style={{ fontSize: "14px" }}>{item.description}</p>
 
-  console.log(powersOfNumber);
-  console.log(justMap);
-
-  const colors = ["green", "yellow", "blue", "black"];
-
-  function singleColor(c, i) {
-    if (i == 1) {
-      return null;
-    }
-    return (
-      <div key={i}>
-        for index <b>{i}</b> color is <b>{c}</b>
+            <h3>KSh {item.amount}</h3>
+          </div>
+        ))}
       </div>
-    );
-  }
-
-  //statement
-
-  return (
-    <div>
-      <h1>Mapping colors</h1>
-
-      <h4>using arrow function</h4>
-      {colors.map((color, index) => {
-        return (
-          <div key={index}>
-            for index <b>{index}</b> color is <b>{color}</b>
-          </div>
-        );
-      })}
-
-      <h4>using direct arrow function</h4>
-      {colors.map((c, i) => (
-        <div key={i}>
-          for index <b>{i}</b> color is <b>{c}</b>
-        </div>
-      ))}
-
-      <h4>using anonymous function</h4>
-      {colors.map(function (c, i) {
-        return (
-          <div key={i}>
-            for index <b>{i}</b> color is <b>{c}</b>
-          </div>
-        );
-      })}
-
-      <h4>using referencing the function</h4>
-      {colors.map(singleColor)}
-
-      <h4>using a component</h4>
-      {colors.map(function (c, i) {
-        return <SingleColorComponent c={c} i={i} key={i} />;
-      })}
-
-      {/*using arrow func 1*/}
-    </div>
-  );
-}
-
-function SingleColorComponent(props) {
-  const { c, i } = props;
-
-  return (
-    <div>
-      for index <b>{i}</b> color is <b>{c}</b>
     </div>
   );
 }
