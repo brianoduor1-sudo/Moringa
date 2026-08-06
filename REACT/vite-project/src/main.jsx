@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import StateAndEvents from "./StateAndEvents/ColoursAndCircle.jsx";
+import SideEffectsConditions from "./SideEffectsConditions/StopWatch.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <StateAndEvents />
+    <SideEffectsConditions />
   </StrictMode>,
 );
