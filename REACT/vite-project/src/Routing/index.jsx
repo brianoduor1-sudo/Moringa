@@ -1,0 +1,25 @@
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
+import CrazyRoute from "./CrazyRoute";
+import Page404 from "./404";
+function Routing() {
+  return (
+    <div>
+      {" "}
+      <nav style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
+        {" "}
+        <Link to="/">Home</Link> <Link to="/about">About</Link>{" "}
+        <Link to="/crazy">Crazy</Link>{" "}
+      </nav>{" "}
+      <Routes>
+        {" "}
+        <Route path="/" element={<Home />} />{" "}
+        <Route path="/about" element={<About />} />{" "}
+        <Route path="/crazy" element={<CrazyRoute />} />{" "}
+        <Route path="*" element={<Page404 />} />{" "}
+      </Routes>{" "}
+    </div>
+  );
+}
+export default Routing;
