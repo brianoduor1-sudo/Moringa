@@ -20,14 +20,7 @@ work easy. by using principles.
 
 JS and python are object oriented.
 → number.toString() ,string.toLowerCase()
-"""
 
-"""
-→ Class →
- -blueprint for an object.◇
-
-→ Class could an architectural drawing of a house.
-    object → implentaiton of the drawing.
 """
 #is to have the name Capitalized
 #fields <properties>
@@ -40,7 +33,14 @@ class House:
     location=""
     architect="KIMANI"
 
+    #js constructor
+    def __init__(self,owner,location):
+        print("Class house created. initializer called")
+        self.owner=owner
+        self.location=location
+
     def config(self,owner,location):
+        print("Config method has run")
         self.owner=owner
         self.location=location
 
@@ -55,10 +55,12 @@ class House:
 
 #→ method . config →
 #→ print self
-brian_house=House()
+#Instance class- > create an object from a class
+brian_house=House(owner="Brian",location="Kikuyu")
+# brian_house.__init__()
 # brian_house.owner="Brian"
 # brian_house.location="Kikiyu"
-brian_house.config(owner="Brian",location="Kikuyi")
+#brian_house.config(owner="Brian",location="Kikuyi")
 print(f"Brians House Owner {brian_house.owner}")
 print(f"Brians Location {brian_house.location}")
 print(f"Brians House Bedrooms {brian_house.bedrooms}")
@@ -71,10 +73,10 @@ brian_house.print_self()
 print("End of print brians")
 
 
-daniel_house=House()
+daniel_house=House(owner="Daniel",location="Muranga")#__init__ ()
 # daniel_house.owner="Daniel"
 # daniel_house.location="Muranga"
-daniel_house.config(owner="Daniel",location="Muranga")
+#daniel_house.config(owner="Daniel",location="Muranga")
 print(f"Daniels House Owner {daniel_house.owner}")
 print(f"Daniels Location {daniel_house.location}")
 print(f"Daniels House Bedrooms {daniel_house.bedrooms}")
