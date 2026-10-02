@@ -1,28 +1,24 @@
-from flask import Flask, send_file, jsonify, request
+from fastapi import FastAPI, HTTPException, status
+
 from orm import Inventory
 from db import Database
 
-app = Flask(__name__)
+app = FastAPI()
 
 db = Database()
 inventory = Inventory(db)
 
-@app.route("/inventory", methods=["GET"])
+@app.get("/inventory")
 def list_inventory():
-    items = inventory.get_all_items()
-    return jsonify(items)
+    return inventory.get_all_items()
 
-@app.route("/inventory", methods=["POST"])
-def add_inventory():
-    data = request.get_json()
-    
-    new_item = inventory.add_item(
-        name=data['name'],
-        qty=data['qty'],
-        buying_price=data['buying_price'],
-        selling_price=data['selling_price']
-    )
-    return jsonify({"message": "Item added successfully", "item": new_item}), 201
-
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.post("/inventory", status_code=status.HTTP_201_CREATED)
+def add_inventory(item: dict):
+    # new_item = inventory.add_item(name=item['name'],
+    #                               qty=item['qty'],
+    #                               buying_price=item['buying_price'], selling_price=item['selling_price'])
+    # verification
+    if not item.get('name'):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Item name is required")
+    new_item = inventory.add_item(**item)
+    return {"message": "Item added successfully", "item": new_item}
