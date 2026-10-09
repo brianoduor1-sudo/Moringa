@@ -2,6 +2,7 @@ from typing import Optional, List
 from fastapi import APIRouter, status, HTTPException, Request
 from pydantic import BaseModel
 from db import prisma
+from cloud import delete_from_cloud
 
 router = APIRouter()
 
@@ -40,14 +41,17 @@ async def create_product(payload: ProductSchema):
 # 2. GET ALL PRODUCTS
 @router.get("/", status_code=status.HTTP_200_OK)
 async def get_all_products():
-    products = await prisma.product.find_many()
+    products = await prisma.product.find_many(include={"images": True})
     return products
 
 
 # 3. GET PRODUCT BY ID
 @router.get("/{product_id}", status_code=status.HTTP_200_OK)
 async def get_product_by_id(product_id: str):
-    product = await prisma.product.find_unique(where={"id": product_id})
+    product = await prisma.product.find_unique(
+        where={"id": product_id},
+        include={"images": True}
+    )
     if not product:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -82,15 +86,31 @@ async def update_product(product_id: str, payload: ProductUpdateSchema):
     return {"message": "Product updated successfully", "product": updated_product}
 
 
-# 5. DELETE PRODUCT
+# 5. DELETE PRODUCT (With Cloudinary & database cascade cleanup)
 @router.delete("/{product_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_product(product_id: str):
-    product = await prisma.product.find_unique(where={"id": product_id})
+    # Retrieve product along with its associated product_image records
+    product = await prisma.product.find_unique(
+        where={"id": product_id},
+        include={"images": True}
+    )
+
     if not product:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Product not found"
         )
 
+    # 1. Delete associated images from Cloudinary
+    if hasattr(product, "images") and product.images:
+        for img in product.images:
+            if img.image:
+                delete_from_cloud(img.image)
+
+    # 2. Remove child image records from DB
+    await prisma.product_image.delete_many(where={"product_id": product_id})
+
+    # 3. Delete product record from DB
     await prisma.product.delete(where={"id": product_id})
+
     return None
